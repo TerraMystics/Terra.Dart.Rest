@@ -25,9 +25,9 @@ class TerraRestfulService {
   }
 
   /// Runs a POST operation via HttpClient to send information.
-  Future<TerraRestfulResponse> postAsync<TSend, TReceive>(
-      String endpoint, TSend data) async {
-    var response = await clientService.postAsync(endpoint, data: data);
+  Future<TerraRestfulResponse> postAsync<TReceive>(
+      String endpoint, String data) async {
+    var response = await clientService.postAsync(endpoint, data);
     if (response.statusCode != 200) {
       throw Exception(
           "Status Code: ${response.statusCode}, Reason: ${response.reasonPhrase}");
@@ -37,9 +37,9 @@ class TerraRestfulService {
   }
 
   /// Runs a PUT operation via HttpClient to send and update information.
-  Future<TerraRestfulResponse> putAsync<TSend, TReceive>(
-      String endpoint, TSend data) async {
-    var response = await clientService.postAsync(endpoint, data: data);
+  Future<TerraRestfulResponse> putAsync<TReceive>(
+      String endpoint, String data) async {
+    var response = await clientService.putAsync(endpoint, data);
     if (response.statusCode != 200) {
       throw Exception(
           "Status Code: ${response.statusCode}, Reason: ${response.reasonPhrase}");

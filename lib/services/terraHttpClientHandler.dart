@@ -18,14 +18,14 @@ class TerraHttpClientHandler {
     return await httpClient!.get(Uri.parse(requestUri));
   }
 
-  Future<global.Response> postAsync(String requestUri, {Object? data}) async {
-    return await httpClient!
-        .post(Uri.parse(requestUri), body: json.encode(data ?? ""));
+  Future<global.Response> postAsync(String requestUri, String data) async {
+    return await httpClient!.post(Uri.parse(requestUri),
+        headers: {"Content-Type": "application/json"}, body: data);
   }
 
-  Future<global.Response> putAsync(String requestUri, {Object? data}) async {
-    return await httpClient!
-        .put(Uri.parse(requestUri), body: json.encode(data ?? ""));
+  Future<global.Response> putAsync(String requestUri, String data) async {
+    return await httpClient!.put(Uri.parse(requestUri),
+        headers: {"Content-Type": "application/json"}, body: data);
   }
 
   void forceDisconnectAllClients() {
